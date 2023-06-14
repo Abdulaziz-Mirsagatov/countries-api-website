@@ -199,6 +199,7 @@ button {
 }
 .main .country-page .container .info-container .extra-info-box .border-countries {
   gap: 0.5em;
+  flex-wrap: wrap;
 }
 .main .country-page .container .info-container .extra-info-box .border-countries div {
   padding: 0.3em 1em;
