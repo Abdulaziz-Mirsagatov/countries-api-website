@@ -14,14 +14,14 @@ function App() {
   return (
     <div
       className={
-        theme == "light-theme"
+        theme === "light-theme"
           ? "wrapper grid-flow light-theme"
           : "wrapper grid-flow dark-theme"
       }
     >
       <Navbar
         handleClick={() =>
-          setTheme(theme == "light-theme" ? "dark-theme" : "light-theme")
+          setTheme(theme === "light-theme" ? "dark-theme" : "light-theme")
         }
       />
       <Main />
