@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Main from "./components/Main";
+import Navbar from "./components/Navbar";
+import "./styles/css/styles.css";
 
 function App() {
+  // Sets the initial state of theme based on user's system preference
+  const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
+    .matches
+    ? "dark-theme"
+    : "light-theme";
+  const [theme, setTheme] = useState(preferredTheme);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={
+        theme == "light-theme"
+          ? "wrapper grid-flow light-theme"
+          : "wrapper grid-flow dark-theme"
+      }
+    >
+      <Navbar
+        handleClick={() =>
+          setTheme(theme == "light-theme" ? "dark-theme" : "light-theme")
+        }
+      />
+      <Main />
     </div>
   );
 }

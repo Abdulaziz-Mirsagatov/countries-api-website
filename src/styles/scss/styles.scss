@@ -1,0 +1,313 @@
+// Font
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+
+$font-family-default: "Nunito Sans", sans-serif;
+
+// Colors
+$primary-light: hsl(209, 23%, 22%);
+$primary-dark: hsl(207, 26%, 17%);
+$primary-darker: hsl(200, 15%, 8%);
+$secondary-light: hsl(0, 0%, 98%);
+$secondary-dark: hsl(0, 0%, 52%);
+$neutral-white: hsl(0, 0%, 100%);
+
+// Theme
+.light-theme {
+  background-color: $secondary-light;
+  color: $primary-darker;
+
+  .element {
+    background-color: $neutral-white;
+    box-shadow: 0 0 5px rgba($color: $secondary-dark, $alpha: 0.5);
+  }
+
+  .input::placeholder,
+  .searchbox {
+    color: $secondary-dark;
+  }
+}
+
+.dark-theme {
+  background-color: $primary-dark;
+  color: $neutral-white;
+
+  .element {
+    background-color: $primary-light;
+  }
+
+  .input::placeholder {
+    color: $neutral-white;
+  }
+}
+
+// Set up
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: $font-family-default;
+  font-size: 1em;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+input,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: inherit;
+}
+.btn {
+  background: 0;
+  border: 0;
+  cursor: pointer;
+}
+.grid-flow {
+  display: grid;
+}
+.flexbox {
+  display: flex;
+}
+//
+
+.wrapper {
+  min-height: 100vh;
+  align-items: start;
+  align-content: start;
+  gap: 1.5em;
+  padding-bottom: 2em;
+}
+
+.navbar {
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 1em;
+
+  .theme-toggle-btn {
+    i {
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.main {
+  width: 90%;
+  margin-inline: auto;
+  gap: 1.5em;
+
+  .search-container {
+    flex-direction: column;
+    gap: 2em;
+
+    .searchbox {
+      padding: 0 1.5em;
+      align-items: center;
+      gap: 1em;
+      border-radius: 5px;
+    }
+
+    .searchbox input {
+      border: 0;
+      width: 100%;
+      height: 3em;
+      outline: none;
+    }
+
+    .filter-container {
+      width: 200px;
+      gap: 0.5em;
+      border-radius: 5px;
+      position: relative;
+      cursor: pointer;
+
+      .selected {
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .selected,
+      .options {
+        border-radius: 5px;
+        padding: 0.8em 1.2em;
+      }
+
+      .options {
+        position: absolute;
+        gap: 0.5em;
+        width: 100%;
+        top: 3.5em;
+        display: none;
+      }
+    }
+
+    .filter-container.active {
+      .options {
+        display: grid;
+      }
+    }
+  }
+
+  .search-list {
+    gap: 3em;
+    align-items: start;
+
+    .card {
+      width: 80%;
+      margin-inline: auto;
+      border-radius: 8px;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .container {
+        padding: 2em 1.5em;
+
+        .title {
+          margin-bottom: 0.5em;
+          font-size: 1.2em;
+        }
+
+        .info-container {
+          p span {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .country-page {
+    justify-items: start;
+    gap: 4em;
+
+    .back-btn {
+      i {
+        margin-right: 1em;
+      }
+
+      padding: 0.5em 2em;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
+    }
+
+    .container {
+      width: 100%;
+      gap: 2.5em;
+
+      span {
+        font-weight: bold;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .info-container {
+        .title {
+          font-size: 1.4em;
+          margin-bottom: 1.2em;
+        }
+
+        .main-info-box {
+          flex-direction: column;
+          gap: 2em;
+          margin-bottom: 2.5em;
+
+          .left,
+          .right {
+            gap: 0.8em;
+          }
+        }
+
+        .extra-info-box {
+          flex-direction: column;
+          gap: 1em;
+
+          .border-countries {
+            gap: 0.5em;
+
+            div {
+              padding: 0.3em 1em;
+              border-radius: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1080px) {
+  .wrapper {
+    gap: 3em;
+  }
+
+  .navbar {
+    padding: 1.5em 5%;
+
+    .title {
+      font-size: 1.4em;
+    }
+  }
+
+  .main {
+    gap: 3em;
+
+    .search-container {
+      flex-direction: row;
+      gap: 0;
+      justify-content: space-between;
+
+      .searchbox {
+        width: 500px;
+      }
+    }
+
+    .search-list {
+      column-gap: 4em;
+      row-gap: 5em;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      justify-content: space-between;
+
+      .card {
+        width: 100%;
+      }
+    }
+
+    .country-page {
+      .container {
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+
+        .info-container {
+          .main-info-box {
+            flex-direction: row;
+            align-items: start;
+          }
+
+          .extra-info-box {
+            flex-direction: row;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
